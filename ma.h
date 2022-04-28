@@ -6,5 +6,5 @@ struct rule {
 
 struct ma {
 	struct rule*	r;
-	uint32_t	n;
+	struct rule*	l;
 };
