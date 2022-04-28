@@ -1,8 +1,15 @@
 +a	a*a+
++b	b*b+
++c	c*c+
 *aa	a*a
 *ab	b*a
+*ac	c*a
 *ba	a*b
 *bb	b*b
+*bc	c*b
+*ca	a*c
+*cb	b*c
+*cc	c*c
 *	_
 +	_.
 _	+
