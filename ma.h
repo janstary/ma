@@ -1,10 +1,13 @@
 struct rule {
-	char*		l;
-	char*		r;
-	struct rule*	n;
+	char*		left;
+	char*		right;
+	size_t		llen;
+	size_t		rlen;
+	int		stop;
+	struct rule*	next;
 };
 
 struct ma {
-	struct rule*	r;
-	struct rule*	l;
+	struct rule*	rules;
+	struct rule*	last;
 };
