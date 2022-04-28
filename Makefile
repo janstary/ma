@@ -11,6 +11,7 @@ test: ma
 	#./ma rev.tm   < rev.in   | diff - rev.out
 	#./ma add.tm   < add.in   | diff - add.out
 	#./ma sub.tm   < sub.in   | diff - sub.out
+	#./ma mul.tm   < mul.in   | diff - mul.out
 	#./ma succ.tm  < succ.in  | diff - succ.out
 	#./ma copy.tm  < copy.in  | diff - copy.out
 
