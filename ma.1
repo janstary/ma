@@ -17,28 +17,34 @@ specifying what gets rewriten to what.
 For any given expression, the first rule whose left side
 matches a substring of the expression is used;
 the leftmost matching substring gets rewritten.
-The rewriting stops when there are no matching rules,
-or if
+The rewriting stops when
 .Sq \\.
-(the dot) marks the right side of the last rule used as a stop.
+(the dot) at the end of a rule marks an explicit stop,
+or when there are no more matches to be rewritten.
 .Pp
 Two characters are recognized as special:
 .Sq \\.
-(dot) at the end of a rule marks a stop, as described above, and
+(the dot) as described above, and
 .Sq _
-(underline) specifies the empty word.
-Note that the leftmost empty word as a substring
-is the beginning of the expression.
+(the underscore) meaning the empty word.
+Note that the empty word is always the leftmost matching substring.
 .Pp
 The set of rules is given in the named
 .Ar file .
 Every line contains the left and right side, separated by whitespace.
-The rest of the line, separetd by whitespace, is ignored.
+The rest of the line, separated by whitespace, is ignored.
 Empty lines are ignored.
 .Pp
-Given the rules,
+It is an error to use
+.Sq \\.
+anywhere else beside the end of a rule;
+it is also an error to use
+.Sq _
+in an otherwise nonempty expression.
+.Pp
+After the rules are parsed,
 .Nm
-rewrites every input line of standard input and prints the result.
+rewrites every line of standard input.
 .Sh EXAMPLES
 The following algorithm reverses a word in {a,b}:
 .Bd -literal
