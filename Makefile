@@ -9,12 +9,12 @@ tm: ma.c ma.h
 
 test: ma
 	./ma rev.ma   < rev.in   | diff - rev.out
-	#./ma add.ma   < add.in   | diff - add.out
-	#./ma sub.ma   < sub.in   | diff - sub.out
-	#./ma mul.ma   < mul.in   | diff - mul.out
-	#./ma gcd.ma   < gcd.in   | diff - gcd.out
-	#./ma succ.ma  < succ.in  | diff - succ.out
-	#./ma copy.ma  < copy.in  | diff - copy.out
+	./ma add.ma   < add.in   | diff - add.out
+	./ma sub.ma   < sub.in   | diff - sub.out
+	./ma mul.ma   < mul.in   | diff - mul.out
+	./ma gcd.ma   < gcd.in   | diff - gcd.out
+	./ma succ.ma  < succ.in  | diff - succ.out
+	./ma copy.ma  < copy.in  | diff - copy.out
 
 lint: ma.1
 	mandoc -Tlint -Wstyle ma.1
