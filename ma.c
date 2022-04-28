@@ -2,20 +2,21 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <ctype.h>
 #include <err.h>
 #include "ma.h"
 
 void
 usage()
 {
-	warnx("usage: ma rules.ma");
+	warnx("usage: ma [-v] rules.ma");
 }
 
 void
 printrule(struct rule* rule)
 {
 	if (rule) {
-		printf("%s\t%s\n", rule->r, rule->l);
+		printf("%s\t%s\n", rule->l, rule->r);
 	}
 }
 
@@ -27,12 +28,13 @@ mkrule(char* line)
 	if ((rule = calloc(1, sizeof(struct rule))) == NULL)
 		err(1, NULL);
 	l = strsep(&line, " \t\n");
+	while (isspace(*line))
+		line++;
 	r = strsep(&line, " \t\n");
 	if (*l == '\0' || *r == '\0') {
 		free(rule);
 		return NULL;
 	}
-	/* FIXME restrict the set of chars? */
 	rule->l = strdup(l);
 	rule->r = strdup(r);
 	return rule;
