@@ -8,6 +8,7 @@ tm: ma.c ma.h
 	$(CC) $(CFLAGS) -o tm tm.c
 
 test: ma
+	#./ma rev.tm   < rev.in   | diff - rev.out
 	#./ma add.tm   < add.in   | diff - add.out
 	#./ma succ.tm  < succ.in  | diff - succ.out
 	#./ma copy.tm  < copy.in  | diff - copy.out
