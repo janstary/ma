@@ -1,5 +1,8 @@
+write the same as a sed/awk script
+	keep rewriting as long as it keeps changing
+
 syntax:
-	whitespace separates left and right; _ is the blank
+	_ is the blank: it can only appear solo, either left or right.
 	do we want to restrict the characters used?
 
 parser:
