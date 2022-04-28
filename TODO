@@ -1,3 +1,11 @@
+syntax:
+	whitespace separates left and right; _ is the blank
+	do we want to restrict the characters used?
+
+parser:
+	the first two strings on a line constitute the rule;
+	the rest of the loine can be used for comments
+
 preprocesor: generate e.g. rules for all chars of the alphabet.
 For example, the following set of rules
 
