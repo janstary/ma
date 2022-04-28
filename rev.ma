@@ -1,9 +1,15 @@
 +++ ++
 ++a a++
 ++b b++
+++c c++
 ++  _.
 +aa a+a
 +ab b+a
++ac c+a
 +ba a+b
 +bb b+b
++bc c+b
++ca a+c
++cb b+c
++cc c+c
 _   +
