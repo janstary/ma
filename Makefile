@@ -10,6 +10,7 @@ tm: ma.c ma.h
 test: ma
 	#./ma rev.tm   < rev.in   | diff - rev.out
 	#./ma add.tm   < add.in   | diff - add.out
+	#./ma sub.tm   < sub.in   | diff - sub.out
 	#./ma succ.tm  < succ.in  | diff - succ.out
 	#./ma copy.tm  < copy.in  | diff - copy.out
 
