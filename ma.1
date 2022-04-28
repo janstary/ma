@@ -3,9 +3,57 @@
 .Os
 .Sh NAME
 .Nm ma
-.Nd run Markov algorithms
+.Nd Markov algorithms
+.Sh SYNOPSIS
+.Nm
+.Op Fl v
+.Ar file
 .Sh DESCRIPTION
 .Nm
-runs Markov algorithms.
+runs Markov rewriting algorithms.
+Every such algorithm is described by a finite sequence of rewriting rules;
+every such rule has a left and right side,
+specifying what gets rewriten to what.
+For any given expression, the first rule whose left side
+matches a substring of the expression is used;
+the leftmost matching substring gets rewritten.
+The rewriting stops when there are no matching rules,
+or if
+.Sq \\.
+(the dot) marks the right side of the last rule used as a stop.
+.Pp
+Two characters are recognized as special:
+.Sq \\.
+(dot) at the end of a rule marks a stop, as described above, and
+.Sq _
+(underline) specifies the empty word.
+Note that the leftmost empty word as a substring
+is the beginning of the expression.
+.Pp
+The set of rules is given in the named
+.Ar file .
+Every line contains the left and right side, separated by whitespace.
+The rest of the line, separetd by whitespace, is ignored.
+Empty lines are ignored.
+.Pp
+Given the rules,
+.Nm
+rewrites every input line of standard input and prints the result.
+.Sh EXAMPLES
+The following algorithm reverses a word in {a,b}:
+.Bd -literal
++++ ++
+++a a++
+++b b++
+++  _.
++aa a+a
++ab b+a
++ba a+b
++bb b+b
+_   +
+.Ed
+.Pp
+.Dl $ echo abaabb | ma rev.ma
+.Dl bbaaba
 .Sh AUTHORS
 .An Jan Starý Aq Mt hans@stare.cz
