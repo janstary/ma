@@ -1,0 +1,13 @@
+preprocesor: generate e.g. rules for all chars of the alphabet.
+For example, the following set of rules
+
+	*aa	a*a
+	*ab	b*a
+	*ba	a*b
+	*bb	b*b
+
+in copy.am could be more succintly given as
+
+	*XY	Y*X
+
+for any X,Y in {a,b}
