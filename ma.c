@@ -6,6 +6,8 @@
 #include <err.h>
 #include "ma.h"
 
+int verbose = 0;
+
 void
 usage()
 {
@@ -38,7 +40,7 @@ mkrule(char* line)
 	}
 	if (strchr(l, '_')) {
 		if (l[0] == '_' && l[1] == '\0') {
-			/*printf("left is blank\n");*/
+			/* blank */
 			*l = '\0';
 		} else {
 			warnx("blank may only appear alone");
@@ -61,7 +63,7 @@ mkrule(char* line)
 	}
 	if (strchr(r, '_')) {
 		if (r[0] == '_' && r[1] == '\0') {
-			/*printf("right is blank\n");*/
+			/* blank */
 			*r = '\0';
 		} else {
 			warnx("blank may only appear alone");
@@ -183,6 +185,40 @@ replace(char* expr, char* here, struct rule* rule)
 	return head;
 }
 
+void
+debug(char* expr, char* here, struct rule* rule)
+{
+	char* c;
+	char* tail;
+	if (expr == NULL)
+		return;
+	if (here && rule) {
+		for (c = expr; *c && c < here ; )
+			putchar(*c++);
+		tail = c + rule->llen;
+		if (isatty(1)) {
+			printf(
+				"\033[4m%s\033[24m",
+				/*"\033[1m%s\033[22m",*/
+				*rule->left ? rule->left : "_");
+		} else {
+			if (*rule->left) {
+				for (c = rule->left; *c ; c++)
+					/*printf("%c%c%c", *c, 0x08, *c);*/
+					printf("%c%c%c", *c, 0x08, '_');
+			} else {
+				printf("%c%c%c", '_', 0x08, '_');
+			}
+		}
+		for (c = tail; *c; )
+			putchar(*c++);
+		printf("\t%s", *rule->right ? rule->right : "_");
+	} else {
+		printf("%s", expr);
+	}
+	putchar('\n');
+}
+
 char*
 rewrite(char* expr, struct ma* ma)
 {
@@ -198,8 +234,11 @@ rewrite(char* expr, struct ma* ma)
 		here = NULL;
 		for (rule = ma->rules; rule; rule = rule->next) {
 			if ((here = strstr(prev, rule->left))) {
-				/*printf("'%s'\tin '%s'\n", rule->left, prev);*/
+				if (verbose > 1)
+					debug(prev, here, rule);
 				this = replace(prev, here, rule);
+				if (verbose == 1)
+					debug(this, NULL, NULL);
 				break;
 			}
 		}
@@ -220,7 +259,10 @@ main(int argc, char** argv)
 	char* line = NULL;
 	struct ma* ma;
 
-	while ((c = getopt(argc, argv, "")) != -1) switch (c) {
+	while ((c = getopt(argc, argv, "v")) != -1) switch (c) {
+		case 'v':
+			verbose++;
+			break;
 		default:
 			usage();
 			return 1;

@@ -44,7 +44,15 @@ in an otherwise nonempty expression.
 .Pp
 After the rules are parsed,
 .Nm
-rewrites every line of standard input.
+rewrites every line of standard input and displays the result.
+With the
+.Fl v
+option,
+.Nm
+also prints the intermediate rewrites;
+with
+.Fl vv ,
+the matches and rules being applied are displayed.
 .Sh EXAMPLES
 The following algorithm reverses a word in {a,b}:
 .Bd -literal
