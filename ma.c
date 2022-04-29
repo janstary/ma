@@ -15,8 +15,11 @@ usage()
 void
 freerule(struct rule* rule)
 {
-	/*FIXME*/
-	free(rule);
+	if (rule) {
+		free(rule->left);
+		free(rule->right);
+		free(rule);
+	}
 }
 
 struct rule*
@@ -118,7 +121,12 @@ printma(struct ma* ma)
 void
 freema(struct ma* ma)
 {
-	/* FIXME */
+	struct rule* rule;
+	if (ma) {
+		for (rule = ma->rules; rule; rule = rule->next)
+			freerule(rule);
+		free(ma);
+	}
 }
 
 struct ma*
