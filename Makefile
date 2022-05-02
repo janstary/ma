@@ -1,11 +1,11 @@
 PREFIX	= $(HOME)
 BINDIR	= $(PREFIX)/bin
 MANDIR	= $(PREFIX)/man/man1
-CFLAGS	= -Wall -pedantic -D_OPENBSD_SOURCE
+CFLAGS	= -Wall -pedantic
 
 all: ma
-tm: ma.c ma.h
-	$(CC) $(CFLAGS) -o tm tm.c
+ma: ma.c ma.h
+	$(CC) $(CFLAGS) -o ma ma.c
 
 test: ma
 	./ma rev.ma   < rev.in   | diff - rev.out
