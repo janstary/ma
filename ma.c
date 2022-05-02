@@ -15,7 +15,7 @@ usage()
 }
 
 void
-freerule(struct rule* rule)
+frule(struct rule* rule)
 {
 	if (rule) {
 		free(rule->left);
@@ -123,10 +123,15 @@ printma(struct ma* ma)
 void
 freema(struct ma* ma)
 {
-	struct rule* rule;
+	struct rule* r;
+	struct rule* n;
 	if (ma) {
-		for (rule = ma->rules; rule; rule = rule->next)
-			freerule(rule);
+		r = ma->rules;
+		while (r) {
+			n = r->next;
+			frule(r);
+			r = n;
+		}
 		free(ma);
 	}
 }
