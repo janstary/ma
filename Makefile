@@ -15,6 +15,8 @@ test: ma
 	./ma gcd.ma   < gcd.in   | diff - gcd.out
 	./ma succ.ma  < succ.in  | diff - succ.out
 	./ma copy.ma  < copy.in  | diff - copy.out
+	./ma pi1k.ma  < pi12.in  | diff - pi12.out
+	./ma pi1k.ma  < pi13.in  | diff - pi13.out
 	./ma pi23.ma  < pi23.in  | diff - pi23.out
 	./ma pikk.ma  < pi33.in  | diff - pi33.out
 	./ma pikk.ma  < pi44.in  | diff - pi44.out
