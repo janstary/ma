@@ -13,6 +13,7 @@ test: ma
 	./ma sub.ma   < sub.in   | diff - sub.out
 	./ma mul.ma   < mul.in   | diff - mul.out
 	./ma gcd.ma   < gcd.in   | diff - gcd.out
+	./ma anbn.ma  < anbn.in  | diff - anbn.out
 	./ma sort.ma  < sort.in  | diff - sort.out
 	./ma succ.ma  < succ.in  | diff - succ.out
 	./ma copy.ma  < copy.in  | diff - copy.out
