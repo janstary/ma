@@ -17,7 +17,8 @@ test: ma
 	./ma copy.ma  < copy.in  | diff - copy.out
 	./ma pi1k.ma  < pi12.in  | diff - pi12.out
 	./ma pi1k.ma  < pi13.in  | diff - pi13.out
-	./ma pi23.ma  < pi23.in  | diff - pi23.out
+	./ma pi2k.ma  < pi23.in  | diff - pi23.out
+	./ma pi3k.ma  < pi33.in  | diff - pi33.out
 	./ma pikk.ma  < pi33.in  | diff - pi33.out
 	./ma pikk.ma  < pi44.in  | diff - pi44.out
 
