@@ -15,12 +15,18 @@ test: ma
 	./ma gcd.ma   < gcd.in   | diff - gcd.out
 	./ma succ.ma  < succ.in  | diff - succ.out
 	./ma copy.ma  < copy.in  | diff - copy.out
+	./ma pi1k.ma  < pi11.in  | diff - pi11.out
 	./ma pi1k.ma  < pi12.in  | diff - pi12.out
 	./ma pi1k.ma  < pi13.in  | diff - pi13.out
+	./ma pi2k.ma  < pi22.in  | diff - pi22.out
 	./ma pi2k.ma  < pi23.in  | diff - pi23.out
+	./ma pi2k.ma  < pi24.in  | diff - pi24.out
 	./ma pi3k.ma  < pi33.in  | diff - pi33.out
+	./ma pi3k.ma  < pi34.in  | diff - pi34.out
+	./ma pi3k.ma  < pi35.in  | diff - pi35.out
 	./ma pikk.ma  < pi33.in  | diff - pi33.out
 	./ma pikk.ma  < pi44.in  | diff - pi44.out
+	./ma pikk.ma  < pi55.in  | diff - pi55.out
 
 lint: ma.1
 	mandoc -Tlint -Wstyle ma.1
