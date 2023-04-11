@@ -16,7 +16,8 @@ test: ma
 	./ma succ.ma  < succ.in  | diff - succ.out
 	./ma copy.ma  < copy.in  | diff - copy.out
 	./ma pi23.ma  < pi23.in  | diff - pi23.out
-	./ma pi33.ma  < pi33.in  | diff - pi33.out
+	./ma pikk.ma  < pi33.in  | diff - pi33.out
+	./ma pikk.ma  < pi44.in  | diff - pi44.out
 
 lint: ma.1
 	mandoc -Tlint -Wstyle ma.1
