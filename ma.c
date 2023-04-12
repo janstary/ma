@@ -204,7 +204,6 @@ debug(char* expr, char* here, struct rule* rule)
 		if (isatty(1)) {
 			printf(
 				"\033[4m%s\033[24m",
-				/*"\033[1m%s\033[22m",*/
 				*rule->left ? rule->left : "_");
 		} else {
 			if (*rule->left) {
